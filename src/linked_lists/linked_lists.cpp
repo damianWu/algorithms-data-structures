@@ -2,6 +2,8 @@
 
 #include "linked_lists/linked_lists.hpp"
 
+#include <iostream>
+
 namespace singly_linked_list {
 
 const Element *SinglyLinkedList::cfront() const { return first_; }
@@ -11,6 +13,17 @@ Element *SinglyLinkedList::find(const int x) const {
     Element *current{first_};
     while (current != nullptr) {
         if (current->value == x) {
+            return current;
+        }
+        current = current->next;
+    }
+    return nullptr;
+}
+
+Element *SinglyLinkedList::find(Element *const e) const {
+    Element *current{first_};
+    while (current != nullptr) {
+        if (current == e) {
             return current;
         }
         current = current->next;
