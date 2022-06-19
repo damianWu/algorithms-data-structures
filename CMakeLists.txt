@@ -84,7 +84,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 # Subdirectories
 # ----------------------
 # add_subdirectory(tests)
-# add_subdirectory()
+add_subdirectory(src/linked_lists)
 
 
 
@@ -92,11 +92,11 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 # ----------------------
 # Create executable target
 # ----------------------
-add_executable(${PROJECT_NAME}  src/main.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp)
 
 
 
 # ----------------------
 # Link libraries target with executable target
 # ----------------------
-target_link_libraries(${PROJECT_NAME} )
+target_link_libraries(${PROJECT_NAME} linked_lists_lib)
