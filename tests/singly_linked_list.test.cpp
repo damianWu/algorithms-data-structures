@@ -192,4 +192,21 @@ TEST(SinglyLinkedListElementAccessTest, ElementAccessTest5) {
     ASSERT_FALSE(result);
 }
 
+TEST(SinglyLinkedListConcatenateWithPlusOperatorTest, PlusOperatorTest1) {
+    // given
+    SinglyLinkedList sll1;
+    SinglyLinkedList sll2;
+    SinglyLinkedList expected;
+    sll1.push_back(8734);
+    sll2.push_back(711);
+
+    // when
+    auto result_a{sll.find(8734)->value};
+    auto result_b{sll.find(711)->value};
+    auto result{expected1 != result_a && expected2 != result_b};
+
+    // then
+    ASSERT_FALSE(result);
+}
+
 }  // namespace
