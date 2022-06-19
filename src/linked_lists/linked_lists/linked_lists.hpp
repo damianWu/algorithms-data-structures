@@ -48,6 +48,23 @@ inline SinglyLinkedList::~SinglyLinkedList() {
     last_ = nullptr;
 }
 
+inline SinglyLinkedList operator+(const SinglyLinkedList &lhs,
+                                  const SinglyLinkedList &rhs) {
+    SinglyLinkedList result;
+
+    auto *lhs_current{lhs.first_};
+    while (lhs_current != nullptr) {
+        result.push_back(lhs_current->value);
+    }
+
+    auto *rhs_current{rhs.first_};
+    while (rhs_current != nullptr) {
+        result.push_back(rhs_current->value);
+    }
+
+    return result;
+}
+
 }  // namespace singly_linked_list
 
 namespace doubly_linked_list {}  // namespace doubly_linked_list
