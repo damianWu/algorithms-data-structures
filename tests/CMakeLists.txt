@@ -16,7 +16,7 @@ target_link_libraries(
         linked_lists_lib          # Library we are testing
         gtest_main              # GTest libraries
         gtest
-        # pthread
+        pthread
         # gmock_main
         # gmock
         # ${CONAN_LIBS}
