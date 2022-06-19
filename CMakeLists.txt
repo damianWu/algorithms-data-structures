@@ -34,7 +34,7 @@ set(CPP_COMPILER_STANDARD "-std=c++17")
 # ----------------------
 # Compiler flags
 # ----------------------
-# set(SANITIZER "-fsanitize=undefined,address")
+set(SANITIZER "-fsanitize=undefined,address")
 # Rejected: -Wmissing-prototypes 
 set(EXTRA_COMPILER_FLAGS "-Wall -Wextra -Werror -Wpedantic -Wconversion -Wshadow -Wold-style-cast -Wpointer-arith -Wcast-qual -Wno-unused-function")
 
@@ -55,8 +55,8 @@ endif()
 # ----------------------
 # Conan
 # ----------------------
-# include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-# conan_basic_setup()
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
 
 
 
