@@ -34,14 +34,17 @@ Element *SinglyLinkedList::find(Element *const e) const {
 void SinglyLinkedList::push_back(const int x) {
     auto *new_element = new Element{x};
 
-    if (!first_) {
+    // If linked list is empty
+    if (!static_cast<bool>(first_)) {
         first_ = new_element;
         last_ = new_element;
-    } else {
-        last_->next = new_element;
-        last_ = new_element;
+        return;
     }
+    last_->next = new_element;
+    last_ = new_element;
 }
+
+bool SinglyLinkedList::empty() const { return !static_cast<bool>(first_); }
 
 // void SinglyLinkedList::remove(int x);
 
