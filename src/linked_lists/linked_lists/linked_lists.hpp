@@ -3,8 +3,11 @@
 #ifndef SRC_LINKED_LISTS_LINKED_LISTS_LINKED_LISTS_HPP_
 #define SRC_LINKED_LISTS_LINKED_LISTS_LINKED_LISTS_HPP_
 
+#include <iostream>
+
 namespace singly_linked_list {
 
+// TODO(@damianWu) necessary?
 enum class SEARCH_RESULT { FAIL, SUCCESS };
 
 struct Element {
@@ -20,6 +23,8 @@ class SinglyLinkedList {
     const Element *cfront() const;
     const Element *cback() const;
     Element *find(int) const;
+    Element *find(Element *) const;
+    bool empty() const;
 
     void remove(int);
     void push_back(int);
@@ -28,11 +33,10 @@ class SinglyLinkedList {
     ~SinglyLinkedList();
 
  private:
-    Element *first_;
-    Element *last_;
+    Element *first_{nullptr};
+    Element *last_{nullptr};
 };
 
-// TODO(@damianWu) Is this correct?
 inline SinglyLinkedList::~SinglyLinkedList() {
     Element *current{first_};
     while (current != nullptr) {
