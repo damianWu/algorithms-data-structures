@@ -43,6 +43,27 @@ Element *SinglyLinkedList::find(Element *const e) const {
 
 void SinglyLinkedList::push_back(const int x) {
     auto *new_element = new Element{x};
+    push_back(new_element);
+}
+
+void SinglyLinkedList::push_back(Element *const new_element) {
+    if (new_element) {
+        // If list is empty
+        if (empty()) {
+            first_ = new_element;
+            last_ = new_element;
+        } else {
+            last_->next = new_element;
+            new_element->next = nullptr;
+            last_ = new_element;
+        }
+    }
+}
+
+void SinglyLinkedList::push_front(const int x) {
+    auto *new_element{new Element{x}};
+    push_front(new_element);
+}
 
     // If linked list is empty
     if (!static_cast<bool>(first_)) {
