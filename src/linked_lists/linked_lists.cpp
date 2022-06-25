@@ -2,9 +2,16 @@
 
 #include "linked_lists/linked_lists.hpp"
 
+#include <cstddef>
 #include <iostream>
 
 namespace singly_linked_list {
+
+SinglyLinkedList::SinglyLinkedList(std::initializer_list<int> li) {
+    for (const auto e : li) {
+        push_back(e);
+    }
+}
 
 const Element *SinglyLinkedList::cfront() const { return first_; }
 const Element *SinglyLinkedList::cback() const { return last_; }
