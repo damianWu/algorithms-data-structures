@@ -148,7 +148,82 @@ void SinglyLinkedList::remove(Element *element) {
     }
 }
 
-// void SinglyLinkedList::push_front(int x);
+void SinglyLinkedList::handle_before(Element *const element,
+                                     Element *const before_element) {
+    if (before_element) {
+        before_element->next = element->next;
+    }
+}
+
+void SinglyLinkedList::handle_first(Element *const element) {
+    if (element == first_) {
+        // If next element exist
+        if (element->next) {
+            first_ = element->next;
+        } else {
+            first_ = nullptr;
+            last_ = nullptr;
+        }
+    }
+}
+
+void SinglyLinkedList::handle_last(Element *const element,
+                                   Element *const before_last) {
+    if (element == last_) {  // element is guarantee not to be nullptr
+        if (before_last) {
+            before_last->next = nullptr;
+            last_ = before_last;
+        }
+    }
+}
+
+void SinglyLinkedList::remove(Element *element, Element *before_element) {
+    // Handle element before
+    handle_before(element, before_element);
+    // Handle if element was @first_ or @last_
+    handle_first(element);
+    handle_last(element, before_element);
+    delete element;
+}
+
+bool operator==(const SinglyLinkedList &lhs, const SinglyLinkedList &rhs) {
+    if (&lhs == &rhs) {
+        return true;
+    }
+
+    Element *lhs_current{lhs.first_};
+    Element *rhs_current{rhs.first_};
+    // If both lists are empty, then they are equal
+    while (lhs_current && rhs_current) {
+        if (lhs_current->value != rhs_current->value) {
+            return false;
+        }
+        lhs_current = lhs_current->next;
+        rhs_current = rhs_current->next;
+    }
+    return !lhs_current && !rhs_current;
+}
+
+bool operator!=(const SinglyLinkedList &lhs, const SinglyLinkedList &rhs) {
+    return !(lhs == rhs);
+}
+
+SinglyLinkedList operator+(const SinglyLinkedList &lhs,
+                           const SinglyLinkedList &rhs) {
+    SinglyLinkedList result;
+
+    auto *lhs_current{lhs.first_};
+    while (lhs_current != nullptr) {
+        result.push_back(lhs_current->value);
+    }
+
+    auto *rhs_current{rhs.first_};
+    while (rhs_current != nullptr) {
+        result.push_back(rhs_current->value);
+    }
+
+    return result;
+}
 
 }  // namespace singly_linked_list
 
