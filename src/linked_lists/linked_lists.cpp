@@ -16,6 +16,9 @@ SinglyLinkedList::SinglyLinkedList(std::initializer_list<int> li) {
 const Element *SinglyLinkedList::cfront() const { return first_; }
 const Element *SinglyLinkedList::cback() const { return last_; }
 
+Element *SinglyLinkedList::front() const { return first_; }
+Element *SinglyLinkedList::back() const { return last_; }
+
 Element *SinglyLinkedList::find(const int x) const {
     Element *current{first_};
     while (current != nullptr) {
