@@ -53,12 +53,13 @@ class SinglyLinkedList {
     void handle_before(Element *, Element *);
     void remove(Element *, Element *);
     auto find_position(uint32_t);
-    void insert(const std::pair<Element *, Element *> &, int);
+    void insert(Element *, Element *, int);
+    void add(Element *, Element *, int);
 };
 
 inline SinglyLinkedList::~SinglyLinkedList() {
     Element *current{first_};
-    while (current != nullptr) {
+    while (current) {
         Element *next{current->next};
         delete current;
         current = next;
@@ -66,6 +67,14 @@ inline SinglyLinkedList::~SinglyLinkedList() {
     first_ = nullptr;
     last_ = nullptr;
 }
+
+inline bool SinglyLinkedList::empty() const { return !first_ && !last_; }
+std::ostream &operator<<(std::ostream &, SinglyLinkedList &);
+
+inline const Element *SinglyLinkedList::cfront() const { return first_; }
+inline const Element *SinglyLinkedList::cback() const { return last_; }
+inline Element *SinglyLinkedList::front() const { return first_; }
+inline Element *SinglyLinkedList::back() const { return last_; }
 
 }  // namespace singly_linked_list
 
