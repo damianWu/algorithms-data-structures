@@ -230,7 +230,7 @@ TEST(SinglyLinkedListInsertElementTest, InsertElementTest2) {
     constexpr int before{12};
     constexpr int new_value{542};
     constexpr int after{13};
-    constexpr int pos{2};
+    constexpr int pos{1};
     SinglyLinkedList sll{before, after};
 
     // when
@@ -238,8 +238,6 @@ TEST(SinglyLinkedListInsertElementTest, InsertElementTest2) {
     auto* before_result{sll.find(before)};
     auto* result{sll.find(new_value)};
     auto* after_result{sll.find(after)};
-    std::cout << before_result->next << '\n';
-    std::cout << result << '\n';
 
     // then
     ASSERT_TRUE(before_result->next == result && result->next == after_result);
