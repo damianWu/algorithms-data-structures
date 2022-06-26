@@ -39,6 +39,7 @@ class SinglyLinkedList {
     void push_front(Element *);
     void pop_back();
     void pop_front();
+    // Index begin with 0
     void insert(uint32_t, int);
     ~SinglyLinkedList();
 

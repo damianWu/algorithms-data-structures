@@ -208,6 +208,15 @@ SinglyLinkedList operator+(const SinglyLinkedList &lhs,
     return result;
 }
 
+std::ostream &operator<<(std::ostream &os, SinglyLinkedList &ll) {
+    auto *current{ll.front()};
+    while (current) {
+        os << current->value << ' ';
+        current = current->next;
+    }
+    return os;
+}
+
 }  // namespace singly_linked_list
 
 namespace doubly_linked_list {}  // namespace doubly_linked_list
