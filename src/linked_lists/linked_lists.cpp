@@ -76,12 +76,12 @@ void SinglyLinkedList::pop_back() { remove(last_); }
 
 void SinglyLinkedList::pop_front() { remove(first_); }
 
-auto SinglyLinkedList::find_position(const uint32_t pos) {
+auto SinglyLinkedList::find_position(const uint32_t position) {
     auto *current{first_};
     Element *before_current{nullptr};
     // Find position (for current)
-    for (size_t i = 0; i < pos - 1; ++i) {  // initial current is not null
-        // if end is reached (pos > size)
+    for (size_t i = 0; i < position; ++i) {  // initial current is not null
+        // if end is reached (position > size)
         if (!current) {
             break;
         }
