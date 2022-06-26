@@ -7,11 +7,11 @@
 int main() {
     using singly_linked_list::SinglyLinkedList;
     try {
-        SinglyLinkedList ll;
-        // sll.push_back(2);
-        // sll.push_back(-756);
-        // sll.push_back(456);
-        // sll.push_back(200);
+        SinglyLinkedList<int> ll;
+        ll.push_back(2);
+        ll.push_back(-756);
+        ll.push_back(456);
+        ll.push_back(200);
         // std::cout << sll << '\n';
         ll.insert(0, 20000);
         std::cout << ll << '\n';
@@ -19,6 +19,8 @@ int main() {
         // ll.pop_back();
         ll.pop_front();
         std::cout << ll.empty() << '\n';
+        SinglyLinkedList<int> ll2;
+        std::cout << (ll == ll2) << '\n';
         // sll.insert(0, 10000);
         // std::cout << sll << '\n';
         // sll.insert(1, 456);

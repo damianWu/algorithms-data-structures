@@ -2,8 +2,6 @@
 
 #include <gtest/gtest.h>
 
-#include <algorithm>
-#include <cstddef>
 #include <linked_lists/linked_lists.hpp>
 
 namespace {
@@ -14,7 +12,7 @@ using singly_linked_list::SinglyLinkedList;
 TEST(SinglyLinkedListPushBackTest, PushBackTest1) {
     // given
     int expected{-2005};
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
 
     // when
     sll.push_back(-2005);
@@ -27,7 +25,7 @@ TEST(SinglyLinkedListPushBackTest, PushBackTest1) {
 TEST(SinglyLinkedListPushBackTest, PushBackTest2) {
     // given
     int expected{-2005};
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
 
     // when
     sll.push_back(-2005);
@@ -40,7 +38,7 @@ TEST(SinglyLinkedListPushBackTest, PushBackTest2) {
 TEST(SinglyLinkedListPushBackTest, PushBackTest3) {
     // given
     int expected{-2005};
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
 
     // when
     sll.push_back(-2005);
@@ -53,7 +51,7 @@ TEST(SinglyLinkedListPushBackTest, PushBackTest3) {
 TEST(SinglyLinkedListPushFrontTest, PushFrontTest1) {
     // given
     constexpr int expected{-2005};
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
 
     // when
     sll.push_front(-2005);
@@ -67,7 +65,7 @@ TEST(SinglyLinkedListPushFrontTest, PushFrontTest2) {
     // given
     constexpr int n1{-2005};
     constexpr int expected{621};
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
 
     // when
     sll.push_front(n1);
@@ -81,8 +79,8 @@ TEST(SinglyLinkedListPushFrontTest, PushFrontTest2) {
 TEST(SinglyLinkedListPushFrontTest, PushFrontTest3) {
     // given
     constexpr int expected{-2005};
-    auto* e1{new Element{expected}};
-    SinglyLinkedList sll;
+    auto* e1{new Element<int>{expected}};
+    SinglyLinkedList<int> sll;
 
     // when
     sll.push_front(e1);
@@ -96,9 +94,9 @@ TEST(SinglyLinkedListPushFrontTest, PushFrontTest4) {
     // given
     constexpr int n1{-2005};
     constexpr int expected{980};
-    auto* e1{new Element{n1}};
-    auto* e2{new Element{expected}};
-    SinglyLinkedList sll;
+    auto* e1{new Element<int>{n1}};
+    auto* e2{new Element<int>{expected}};
+    SinglyLinkedList<int> sll;
 
     // when
     sll.push_front(e1);
@@ -113,7 +111,7 @@ TEST(SinglyLinkedListPopBackTest, PopBackTest1) {
     // given
     constexpr int expected{-2005};
     constexpr int n1{980};
-    SinglyLinkedList sll{expected, n1};
+    SinglyLinkedList<int> sll{expected, n1};
 
     // when
     sll.pop_back();
@@ -125,7 +123,7 @@ TEST(SinglyLinkedListPopBackTest, PopBackTest1) {
 
 TEST(SinglyLinkedListPopBackTest, PopBackTest2) {
     // given
-    SinglyLinkedList sll{2005};
+    SinglyLinkedList<int> sll{2005};
 
     // when
     sll.pop_back();
@@ -137,7 +135,7 @@ TEST(SinglyLinkedListPopBackTest, PopBackTest2) {
 
 TEST(SinglyLinkedListPopBackTest, PopBackTest3) {
     // given
-    SinglyLinkedList sll{};
+    SinglyLinkedList<int> sll{};
 
     // when
     sll.pop_back();
@@ -151,7 +149,7 @@ TEST(SinglyLinkedListPopFrontTest, PopFrontTest1) {
     // given
     constexpr int n1{980};
     constexpr int expected{-2005};
-    SinglyLinkedList sll{n1, expected};
+    SinglyLinkedList<int> sll{n1, expected};
 
     // when
     sll.pop_front();
@@ -163,7 +161,7 @@ TEST(SinglyLinkedListPopFrontTest, PopFrontTest1) {
 
 TEST(SinglyLinkedListPopFrontTest, PopFrontTest2) {
     // given
-    SinglyLinkedList sll{2005};
+    SinglyLinkedList<int> sll{2005};
 
     // when
     sll.pop_front();
@@ -175,7 +173,7 @@ TEST(SinglyLinkedListPopFrontTest, PopFrontTest2) {
 
 TEST(SinglyLinkedListPopFrontTest, PopFrontTest3) {
     // given
-    SinglyLinkedList sll{};
+    SinglyLinkedList<int> sll{};
 
     // when
     sll.pop_front();
@@ -187,8 +185,8 @@ TEST(SinglyLinkedListPopFrontTest, PopFrontTest3) {
 
 TEST(SinglyLinkedListNullElementTest, PushBackTestFrontIsNull) {
     // given
-    const Element* expected{nullptr};
-    SinglyLinkedList sll;
+    const Element<int>* expected{nullptr};
+    SinglyLinkedList<int> sll;
 
     // when
     const auto* result{sll.cfront()};
@@ -199,8 +197,8 @@ TEST(SinglyLinkedListNullElementTest, PushBackTestFrontIsNull) {
 
 TEST(SinglyLinkedListNullElementTest, PushBackTestBackIsNull) {
     // given
-    const Element* expected{nullptr};
-    SinglyLinkedList sll;
+    const Element<int>* expected{nullptr};
+    SinglyLinkedList<int> sll;
 
     // when
     const auto* result{sll.cback()};
@@ -215,7 +213,7 @@ TEST(SinglyLinkedListInsertElementTest, InsertElementTest1) {
     constexpr int expected{542};
     constexpr int after{13};
     constexpr int pos{2};
-    SinglyLinkedList sll{before, after};
+    SinglyLinkedList<int> sll{before, after};
 
     // when
     sll.insert(pos, expected);
@@ -231,7 +229,7 @@ TEST(SinglyLinkedListInsertElementTest, InsertElementTest2) {
     constexpr int new_value{542};
     constexpr int after{13};
     constexpr int pos{1};
-    SinglyLinkedList sll{before, after};
+    SinglyLinkedList<int> sll{before, after};
 
     // when
     sll.insert(pos, new_value);
@@ -249,7 +247,7 @@ TEST(SinglyLinkedListInsertElementTest, InsertElementOutOfRangeTest1) {
     constexpr int before{13};
     constexpr int new_value{542};
     constexpr int pos{50};
-    SinglyLinkedList sll{before_before, before};
+    SinglyLinkedList<int> sll{before_before, before};
 
     // when
     sll.insert(pos, new_value);
@@ -266,7 +264,7 @@ TEST(SinglyLinkedListInsertElementTest, InsertElementOutOfRangeTest2) {
     // given
     constexpr int expected{542};
     constexpr int pos{50};
-    SinglyLinkedList sll{};
+    SinglyLinkedList<int> sll{};
 
     // when
     sll.insert(pos, expected);
@@ -280,7 +278,7 @@ TEST(SinglyLinkedListInsertElementTest, InsertElementOutOfRangeTest2) {
 //     // given
 //     constexpr int expected{542};
 //     constexpr int pos{-50};
-//     SinglyLinkedList sll{};
+//     SinglyLinkedList<int> sll{};
 
 //     // when
 //     sll.insert(pos, expected);
@@ -294,7 +292,7 @@ TEST(SinglyLinkedListInsertElementTest, InsertElementPositionZeroTest1) {
     // given
     constexpr int expected{542};
     constexpr int pos{0};
-    SinglyLinkedList sll{};
+    SinglyLinkedList<int> sll{};
 
     // when
     sll.insert(pos, expected);
@@ -306,7 +304,7 @@ TEST(SinglyLinkedListInsertElementTest, InsertElementPositionZeroTest1) {
 
 TEST(SinglyLinkedListIsEmptyTest, IsEmptyTest1) {
     // given
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
 
     // when
     auto result{sll.empty()};
@@ -317,7 +315,7 @@ TEST(SinglyLinkedListIsEmptyTest, IsEmptyTest1) {
 
 TEST(SinglyLinkedListIsEmptyTest, IsEmptyTest2) {
     // given
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
     sll.push_back(2);
     sll.push_back(-756);
     sll.insert(1, 456);
@@ -335,7 +333,7 @@ TEST(SinglyLinkedListIsEmptyTest, IsEmptyTest2) {
 
 TEST(SinglyLinkedListIsEmptyTest, IsEmptyTest3) {
     // given
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
     sll.push_back(2);
     sll.push_back(-756);
     sll.insert(1, 456);
@@ -354,7 +352,7 @@ TEST(SinglyLinkedListIsEmptyTest, IsEmptyTest3) {
 
 TEST(SinglyLinkedListIsNotEmptyTest, IsNotEmptyTest) {
     // given
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
     sll.push_back(2);
     sll.push_back(-756);
 
@@ -367,7 +365,7 @@ TEST(SinglyLinkedListIsNotEmptyTest, IsNotEmptyTest) {
 
 TEST(SinglyLinkedListElementAccessTest, ElementAccessTest1) {
     // given
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
     sll.push_back(-2);
     sll.push_back(12);
 
@@ -384,7 +382,7 @@ TEST(SinglyLinkedListElementAccessTest, ElementAccessTest1) {
 
 TEST(SinglyLinkedListElementAccessTest, ElementAccessTest2) {
     // given
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
     sll.push_back(-2);
     sll.push_back(12);
     sll.push_back(1);
@@ -405,7 +403,7 @@ TEST(SinglyLinkedListElementAccessTest, ElementAccessTest2) {
 
 TEST(SinglyLinkedListElementAccessTest, ElementAccessTest3) {
     // given
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
     sll.push_back(1);
     sll.push_back(-1);
 
@@ -424,7 +422,7 @@ TEST(SinglyLinkedListElementAccessTest, ElementAccessTest3) {
 
 TEST(SinglyLinkedListElementAccessTest, ElementAccessTest4) {
     // given
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
     sll.push_back(8734);
     sll.push_back(711);
 
@@ -442,7 +440,7 @@ TEST(SinglyLinkedListElementAccessTest, ElementAccessTest4) {
 
 TEST(SinglyLinkedListElementAccessTest, ElementAccessTest5) {
     // given
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
     sll.push_back(8734);
     sll.push_back(711);
 
@@ -462,7 +460,7 @@ TEST(SinglyLinkedListInitializerListTest, InitializerListTest1) {
     // given
     int expected1{534};
     int expected2{12};
-    SinglyLinkedList sll{expected1, expected2};
+    SinglyLinkedList<int> sll{expected1, expected2};
 
     // when
     auto result_1{sll.find(expected1)->value};
@@ -477,7 +475,7 @@ TEST(SinglyLinkedListInitializerListTest, InitializerListFailTest1) {
     // given
     int expected1{534};
     int expected2{12};
-    SinglyLinkedList sll{expected1, 54};
+    SinglyLinkedList<int> sll{expected1, 54};
 
     // when
     auto result_1{sll.find(expected1)->value};
@@ -491,8 +489,8 @@ TEST(SinglyLinkedListInitializerListTest, InitializerListFailTest1) {
 
 TEST(SinglyLinkedListCompareListsTest, CompareListsTest1) {
     // given
-    SinglyLinkedList sll1{100};
-    SinglyLinkedList sll2{100};
+    SinglyLinkedList<int> sll1{100};
+    SinglyLinkedList<int> sll2{100};
 
     // when
     auto result{sll1 == sll2};
@@ -503,8 +501,8 @@ TEST(SinglyLinkedListCompareListsTest, CompareListsTest1) {
 
 TEST(SinglyLinkedListCompareListsTest, CompareListsTest2) {
     // given
-    SinglyLinkedList sll1{100};
-    SinglyLinkedList sll2{200};
+    SinglyLinkedList<int> sll1{100};
+    SinglyLinkedList<int> sll2{200};
 
     // when
     auto result{sll1 == sll2};
@@ -515,8 +513,8 @@ TEST(SinglyLinkedListCompareListsTest, CompareListsTest2) {
 
 TEST(SinglyLinkedListCompareListsTest, CompareListsTest3) {
     // given
-    SinglyLinkedList sll1{};
-    SinglyLinkedList sll2{};
+    SinglyLinkedList<int> sll1{};
+    SinglyLinkedList<int> sll2{};
 
     // when
     auto result{sll1 == sll2};
@@ -527,8 +525,8 @@ TEST(SinglyLinkedListCompareListsTest, CompareListsTest3) {
 
 TEST(SinglyLinkedListCompareListsTest, CompareListsTest4) {
     // given
-    SinglyLinkedList sll1;
-    SinglyLinkedList sll2;
+    SinglyLinkedList<int> sll1;
+    SinglyLinkedList<int> sll2;
 
     // when
     auto result{sll1 == sll2};
@@ -539,8 +537,8 @@ TEST(SinglyLinkedListCompareListsTest, CompareListsTest4) {
 
 TEST(SinglyLinkedListCompareListsTest, CompareListsTest5) {
     // given
-    SinglyLinkedList sll1{100};
-    SinglyLinkedList sll2{};
+    SinglyLinkedList<int> sll1{100};
+    SinglyLinkedList<int> sll2{};
 
     // when
     auto result{sll1 == sll2};
@@ -551,8 +549,8 @@ TEST(SinglyLinkedListCompareListsTest, CompareListsTest5) {
 
 TEST(SinglyLinkedListCompareListsTest, CompareListsTest6) {
     // given
-    SinglyLinkedList sll1{100, 200, 300, 400, 800};
-    SinglyLinkedList sll2{100, 200, 300, 400, 800};
+    SinglyLinkedList<int> sll1{100, 200, 300, 400, 800};
+    SinglyLinkedList<int> sll2{100, 200, 300, 400, 800};
 
     // when
     auto result{sll1 == sll2};
@@ -563,8 +561,8 @@ TEST(SinglyLinkedListCompareListsTest, CompareListsTest6) {
 
 TEST(SinglyLinkedListCompareListsTest, CompareListsTest7) {
     // given
-    SinglyLinkedList sll1{100, 200, 300, -400, 800};
-    SinglyLinkedList sll2{100, 200, 300, 400, 800};
+    SinglyLinkedList<int> sll1{100, 200, 300, -400, 800};
+    SinglyLinkedList<int> sll2{100, 200, 300, 400, 800};
 
     // when
     auto result{sll1 == sll2};
@@ -575,9 +573,9 @@ TEST(SinglyLinkedListCompareListsTest, CompareListsTest7) {
 
 TEST(SinglyLinkedListConcatenateWithPlusOperatorTest, PlusOperatorTest1) {
     // given
-    SinglyLinkedList sll1{100};
-    SinglyLinkedList sll2{200};
-    SinglyLinkedList expected{100, 200};
+    SinglyLinkedList<int> sll1{100};
+    SinglyLinkedList<int> sll2{200};
+    SinglyLinkedList<int> expected{100, 200};
 
     // when
     auto result{sll1 == sll2};
@@ -587,7 +585,7 @@ TEST(SinglyLinkedListConcatenateWithPlusOperatorTest, PlusOperatorTest1) {
 
 TEST(SinglyLinkedListEmptyListTest, EmptyListTest1) {
     // given
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
 
     // when
     // then
@@ -596,9 +594,9 @@ TEST(SinglyLinkedListEmptyListTest, EmptyListTest1) {
 
 TEST(SinglyLinkedListEmptyListTest, EmptyListTest2) {
     // given
-    auto* e1{new Element{100}};
-    auto* e2{new Element{100}};
-    SinglyLinkedList sll;
+    auto* e1{new Element<int>{100}};
+    auto* e2{new Element<int>{100}};
+    SinglyLinkedList<int> sll;
     sll.push_back(e1);
     sll.push_back(e2);
 
@@ -608,8 +606,8 @@ TEST(SinglyLinkedListEmptyListTest, EmptyListTest2) {
 
 TEST(SinglyLinkedListDeleteElementTest, DeleteElementTest1) {
     // given
-    auto* e{new Element{100}};
-    SinglyLinkedList sll;
+    auto* e{new Element<int>{100}};
+    SinglyLinkedList<int> sll;
     sll.push_back(e);
 
     // when
@@ -621,8 +619,8 @@ TEST(SinglyLinkedListDeleteElementTest, DeleteElementTest1) {
 
 TEST(SinglyLinkedListDeleteElementTest, DeleteSameElementTwiceTest2) {
     // given
-    auto* e{new Element{100}};
-    SinglyLinkedList sll;
+    auto* e{new Element<int>{100}};
+    SinglyLinkedList<int> sll;
     sll.push_back(e);
 
     // when
@@ -635,11 +633,11 @@ TEST(SinglyLinkedListDeleteElementTest, DeleteSameElementTwiceTest2) {
 
 TEST(SinglyLinkedListDeleteElementTest, DeleteElementTest3) {
     // given
-    auto* e1{new Element{100}};
-    auto* e2{new Element{123}};
-    auto* e3{new Element{345}};
-    auto* e4{new Element{5656}};
-    SinglyLinkedList sll;
+    auto* e1{new Element<int>{100}};
+    auto* e2{new Element<int>{123}};
+    auto* e3{new Element<int>{345}};
+    auto* e4{new Element<int>{5656}};
+    SinglyLinkedList<int> sll;
     sll.push_back(e1);
     sll.push_back(e2);
     sll.push_back(e3);
@@ -661,11 +659,11 @@ TEST(SinglyLinkedListDeleteElementTest, DeleteSecondElementTest4) {
     constexpr int n2{123};
     constexpr int n3{345};
     constexpr int n4{5656};
-    auto* expected1{new Element{n1}};
-    auto* expected2{new Element{n2}};
-    auto* expected3{new Element{n3}};
-    auto* expected4{new Element{n4}};
-    SinglyLinkedList sll;
+    auto* expected1{new Element<int>{n1}};
+    auto* expected2{new Element<int>{n2}};
+    auto* expected3{new Element<int>{n3}};
+    auto* expected4{new Element<int>{n4}};
+    SinglyLinkedList<int> sll;
     sll.push_back(expected1);
     sll.push_back(expected2);
     sll.push_back(expected3);
@@ -685,7 +683,7 @@ TEST(SinglyLinkedListDeleteElementTest, DeleteSecondElementTest4) {
 
 TEST(SinglyLinkedListDeleteElementTest, DeleteNullElementTest5) {
     // given
-    SinglyLinkedList sll;
+    SinglyLinkedList<int> sll;
 
     // when
     sll.remove(nullptr);
@@ -697,8 +695,8 @@ TEST(SinglyLinkedListDeleteElementTest, DeleteNullElementTest5) {
 
 TEST(SinglyLinkedListDeleteElementTest, DeleteElementWhichNotExistTest6) {
     // given
-    auto* e{new Element{42}};
-    SinglyLinkedList sll;
+    auto* e{new Element<int>{42}};
+    SinglyLinkedList<int> sll;
 
     // when
     sll.remove(e);
@@ -712,10 +710,10 @@ TEST(SinglyLinkedListDeleteElementTest, DeleteElementWhichNotExistTest6) {
 
 TEST(SinglyLinkedListDeleteElementTest, DeleteElementLastTest7) {
     // given
-    auto* e1{new Element{42}};
-    auto* e2{new Element{43}};
-    auto* e3{new Element{44}};
-    SinglyLinkedList sll;
+    auto* e1{new Element<int>{42}};
+    auto* e2{new Element<int>{43}};
+    auto* e3{new Element<int>{44}};
+    SinglyLinkedList<int> sll;
     sll.push_back(e1);
     sll.push_back(e2);
     sll.push_back(e3);
@@ -730,10 +728,10 @@ TEST(SinglyLinkedListDeleteElementTest, DeleteElementLastTest7) {
 
 TEST(SinglyLinkedListDeleteElementTest, DeleteElementFirstTest8) {
     // given
-    auto* e1{new Element{42}};
-    auto* e2{new Element{43}};
-    auto* e3{new Element{44}};
-    SinglyLinkedList sll;
+    auto* e1{new Element<int>{42}};
+    auto* e2{new Element<int>{43}};
+    auto* e3{new Element<int>{44}};
+    SinglyLinkedList<int> sll;
     sll.push_back(e1);
     sll.push_back(e2);
     sll.push_back(e3);
@@ -748,8 +746,8 @@ TEST(SinglyLinkedListDeleteElementTest, DeleteElementFirstTest8) {
 
 TEST(SinglyLinkedListDeleteElementTest, DeleteElementOneFirstTest9) {
     // given
-    auto* e1{new Element{42}};
-    SinglyLinkedList sll;
+    auto* e1{new Element<int>{42}};
+    SinglyLinkedList<int> sll;
     sll.push_back(e1);
 
     // when
@@ -761,8 +759,8 @@ TEST(SinglyLinkedListDeleteElementTest, DeleteElementOneFirstTest9) {
 
 TEST(SinglyLinkedListDeleteElementTest, DeleteElementOneLastTest10) {
     // given
-    auto* e1{new Element{42}};
-    SinglyLinkedList sll;
+    auto* e1{new Element<int>{42}};
+    SinglyLinkedList<int> sll;
     sll.push_back(e1);
 
     // when
