@@ -34,7 +34,7 @@ set(CPP_COMPILER_STANDARD "-std=c++17")
 # ----------------------
 # Compiler flags
 # ----------------------
-# set(SANITIZER "-fsanitize=undefined,address")
+set(SANITIZER "-fsanitize=undefined,address")
 # Rejected: -Wmissing-prototypes 
 set(EXTRA_COMPILER_FLAGS "-Wall -Wextra -Werror -Wpedantic -Wconversion -Wshadow -Wold-style-cast -Wpointer-arith -Wcast-qual -Wno-unused-function")
 
@@ -55,8 +55,8 @@ endif()
 # ----------------------
 # Conan
 # ----------------------
-# include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-# conan_basic_setup()
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
 
 
 
@@ -76,14 +76,14 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 # Tests
 # ----------------------
 # Must be defined in top-most CMakeLists.txt file.
-# enable_testing()
+enable_testing()
 
 
 
 # ----------------------
 # Subdirectories
 # ----------------------
-# add_subdirectory(tests)
+add_subdirectory(tests)
 add_subdirectory(src/linked_lists)
 
 
