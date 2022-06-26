@@ -91,39 +91,29 @@ auto SinglyLinkedList::find_position(const uint32_t position) {
     return std::make_pair(before_current, current);
 }
 
-void SinglyLinkedList::insert(
-    const std::pair<Element *, Element *> &before_current_and_current,
-    const int value) {
-    auto [before_current, current] = before_current_and_current;
-    if (!current) {
-        push_back(value);
-    } else {
-        // position found; add element
-        auto *new_element{new Element{value}};
-        new_element->next = current;
-        if (before_current) {
-            // handle before
-            before_current->next = new_element;
-        }
-    }
-}
-
-void SinglyLinkedList::insert(const uint32_t pos, const int value) {
-    if (!empty()) {
-        // find position
-        const auto before_current_and_current{find_position(pos)};
-        // insert value
-        insert(before_current_and_current, value);
-    } else {
-        // if empty
-        auto *new_element{new Element{value}};
+void SinglyLinkedList::add(Element *const before_current,
+                           Element *const current, const int value) {
+    auto *new_element{new Element{value}};
+    new_element->next = current;
+    if (before_current) {  // handle before
+        before_current->next = new_element;
+    } else {  // if not empty and pos == 0
         first_ = new_element;
-        last_ = new_element;
     }
 }
 
-bool SinglyLinkedList::empty() const {
-    return !static_cast<bool>(first_) && !static_cast<bool>(last_);
+void SinglyLinkedList::insert(Element *const before_current,
+                              Element *const current, const int value) {
+    if (!current) {  // position not found; add an element on the back
+        push_back(value);
+    } else {  // position found; add element
+        add(before_current, current, value);
+    }
+}
+
+void SinglyLinkedList::insert(const uint32_t position, const int value) {
+    const auto [before_current, before]{find_position(position)};
+    insert(before_current, before, value);
 }
 
 void SinglyLinkedList::remove(Element *element) {
