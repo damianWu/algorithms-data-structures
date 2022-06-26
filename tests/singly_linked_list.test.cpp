@@ -304,16 +304,52 @@ TEST(SinglyLinkedListInsertElementTest, InsertElementPositionZeroTest1) {
     ASSERT_EQ(expected, result);
 }
 
-TEST(SinglyLinkedListIsEmptyTest, IsEmptyTest) {
+TEST(SinglyLinkedListIsEmptyTest, IsEmptyTest1) {
     // given
     SinglyLinkedList sll;
-    bool expected{true};
 
     // when
     auto result{sll.empty()};
 
     // then
-    ASSERT_EQ(result, expected);
+    ASSERT_TRUE(result);
+}
+
+TEST(SinglyLinkedListIsEmptyTest, IsEmptyTest2) {
+    // given
+    SinglyLinkedList sll;
+    sll.push_back(2);
+    sll.push_back(-756);
+    sll.insert(1, 456);
+
+    // when
+    sll.pop_back();
+    sll.pop_back();
+    sll.pop_back();
+    sll.pop_back();
+    auto result{sll.empty()};
+
+    // then
+    ASSERT_TRUE(result);
+}
+
+TEST(SinglyLinkedListIsEmptyTest, IsEmptyTest3) {
+    // given
+    SinglyLinkedList sll;
+    sll.push_back(2);
+    sll.push_back(-756);
+    sll.insert(1, 456);
+    sll.insert(0, 1000);
+
+    // when
+    sll.pop_back();
+    sll.pop_back();
+    sll.pop_back();
+    sll.pop_back();
+    auto result{sll.empty()};
+
+    // then
+    ASSERT_TRUE(result);
 }
 
 TEST(SinglyLinkedListIsNotEmptyTest, IsNotEmptyTest) {
@@ -322,13 +358,11 @@ TEST(SinglyLinkedListIsNotEmptyTest, IsNotEmptyTest) {
     sll.push_back(2);
     sll.push_back(-756);
 
-    bool expected{false};
-
     // when
     auto result{sll.empty()};
 
     // then
-    ASSERT_EQ(result, expected);
+    ASSERT_FALSE(result);
 }
 
 TEST(SinglyLinkedListElementAccessTest, ElementAccessTest1) {
